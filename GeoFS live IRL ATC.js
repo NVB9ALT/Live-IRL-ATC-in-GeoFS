@@ -1,3 +1,5 @@
+//thanks to AriakimTaiyo for the distance and LLA stuff
+
 let kmiaLLA = [[25.796182023339707, -80.28454441042501, 11.15922051437477]];
 
 function distance(pos1, pos2) {
