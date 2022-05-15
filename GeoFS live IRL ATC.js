@@ -1,5 +1,6 @@
 //thanks to AriakimTaiyo for the distance and LLA stuff
 
+function playLiveATC() {
 let kmiaLLA = [[25.796182023339707, -80.28454441042501, 11.15922051437477]];
 
 function distance(pos1, pos2) {
@@ -9,23 +10,29 @@ var c = pos2[2] - pos1[2];
 return Math.sqrt(a * a + b * b + c * c)
 };
 
-function playLiveATC() {
+let groundWindow = new window("https://s1-fmt2.liveatc.net/kmia3_twr_1183","popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
+let approach1Window = new window("https://s1-bos.liveatc.net/kmia3_app_12485","popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
+let approach2Window = new window("https://s1-fmt2.liveatc.net/kmia3_app_1205", "popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
+
+function checkATC() {
 console.log("YEET");
 kmiaLLA.forEach(function(e){
    if (distance(geofs.aircraft.instance.llaLocation, e) < 500) {
 	   if (geofs.animation.values.haglFeet < 1000) {
 		approach1Window.close()
 		approach2Window.close()
-   var groundWindow = window.open("https://s1-fmt2.liveatc.net/kmia3_twr_1183","popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
+		groundWindow.open()
+       }
 		else {
 		groundWindow.close()
-	var approach1Window = window.open("https://s1-bos.liveatc.net/kmia3_app_12485","popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
-	var approach2Window = window.open("https://s1-fmt2.liveatc.net/kmia3_app_1205", "popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
+		approach1Window.open()
+		approach2Window.open()
          }
 	   }
    })
 };
 
-let repeatChecks = setInterval(function(){
-playLiveATC()
-}, 1000);
+   let repeatChecks = setInterval(function(){
+   checkATC()
+   }, 1000);
+}
