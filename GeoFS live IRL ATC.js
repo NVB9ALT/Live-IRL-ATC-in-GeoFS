@@ -10,9 +10,9 @@ var c = pos2[2] - pos1[2];
 return Math.sqrt(a * a + b * b + c * c)
 };
 
-let groundWindow = new window("https://s1-fmt2.liveatc.net/kmia3_twr_1183","popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
-let approach1Window = new window("https://s1-bos.liveatc.net/kmia3_app_12485","popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
-let approach2Window = new window("https://s1-fmt2.liveatc.net/kmia3_app_1205", "popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
+let groundWindow = window("https://s1-fmt2.liveatc.net/kmia3_twr_1183","popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
+let approach1Window = window("https://s1-bos.liveatc.net/kmia3_app_12485","popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
+let approach2Window = window("https://s1-fmt2.liveatc.net/kmia3_app_1205", "popUpWindow","height=50,width=150,left=250,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no");
 
 function checkATC() {
 console.log("YEET");
@@ -32,7 +32,7 @@ kmiaLLA.forEach(function(e){
    })
 };
 
-   let repeatChecks = setInterval(function(){
-   checkATC()
+let repeatChecks = setInterval(function(){
+checkATC()
    }, 1000);
 }
